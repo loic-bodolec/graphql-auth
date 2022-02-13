@@ -2,20 +2,9 @@ import { useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import gql from 'graphql-tag';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-
-const SIGNUP = gql`
-  mutation signup($firstname: String!, $lastname: String!, $email: String!, $password: String!) {
-    signup(firstname: $firstname, lastname: $lastname, email: $email, password: $password) {
-      id
-      firstname
-      lastname
-      email
-    }
-  }
-`;
+import { SIGNUP } from '../services/api/mutations/user-mutations';
 
 function SignupScreen(): JSX.Element {
   const { replace } = useHistory();
