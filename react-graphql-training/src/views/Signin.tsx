@@ -5,18 +5,12 @@ import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { SIGNIN } from '../services/api/mutations/user-mutations';
 
-/* const SIGNIN = gql`
-  mutation signin($email: String!, $password: String!) {
-    signin(email: $email, password: $password)
-  }
-`; */
-
 function SigninScreen(): JSX.Element {
   const push = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [failed, setFailed] = useState(false);
-  const [doSignin, { /* data,  */ loading, error }] = useMutation(SIGNIN);
+  const [doSignin, { loading, error }] = useMutation(SIGNIN);
 
   const onSubmit = async () => {
     setFailed(false);
