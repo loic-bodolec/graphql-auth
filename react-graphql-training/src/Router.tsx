@@ -1,34 +1,33 @@
 import { useQuery } from '@apollo/client';
-import { Redirect, Route } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, /* Navigate, */ Route, Routes } from 'react-router-dom';
 import { GET_PROFILE } from './services/api/queries/user-queries';
 import HomeScreen from './views/Home';
 import SigninScreen from './views/Signin';
 import SignupScreen from './views/Signup';
 import DashboardScreen from './views/Dashboard';
 import ProfileScreen from './views/Profile';
+import { Layout } from './components/Layout';
 
 function Router(): JSX.Element {
   const { data /*, loading, error */ } = useQuery(GET_PROFILE);
 
   return (
     <BrowserRouter>
-      <Redirect exact path="/" to={data ? '/dashboard' : '/'} />
-      <Route exact path="/signin">
-        <SigninScreen></SigninScreen>
-      </Route>
-      <Route exact path="/signup">
-        <SignupScreen></SignupScreen>
-      </Route>
-      <Route exact path="/dashboard">
-        <DashboardScreen></DashboardScreen>
-      </Route>
-      <Route exact path="/profile">
-        <ProfileScreen></ProfileScreen>
-      </Route>
-      <Route exact path="/">
-        <HomeScreen></HomeScreen>
-      </Route>
+      <Routes>
+        {/*         <Navigate to={data ? '/dashboard' : '/'} /> */}
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/signin" element={<SigninScreen />} />
+        <Route path="/signup" element={<SignupScreen />} />
+        {data ? (
+          <Route element={<Layout />}>
+            <Route path="/dashboard" element={<DashboardScreen />} />
+            <Route path="/profile" element={<ProfileScreen />} />
+          </Route>
+        ) : (
+          '/'
+        )}
+        <Route path="*" element={<HomeScreen />} />
+      </Routes>
     </BrowserRouter>
   );
 }

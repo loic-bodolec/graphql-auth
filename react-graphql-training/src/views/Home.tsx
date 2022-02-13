@@ -1,9 +1,9 @@
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Logo from '../assets/logo.png';
 
 function HomeScreen(): JSX.Element {
-  const { push } = useHistory();
+  const push = useNavigate();
 
   return (
     <div className="home-container">

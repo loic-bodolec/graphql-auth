@@ -1,7 +1,6 @@
 import { useMutation } from '@apollo/client';
 import { /* useEffect,  */ useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router';
+import { useNavigate, Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { SIGNIN } from '../services/api/mutations/user-mutations';
@@ -13,7 +12,7 @@ import { SIGNIN } from '../services/api/mutations/user-mutations';
 `; */
 
 function SigninScreen(): JSX.Element {
-  const { replace } = useHistory();
+  const push = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [failed, setFailed] = useState(false);
@@ -30,7 +29,7 @@ function SigninScreen(): JSX.Element {
     if (result.data.signin) {
       // success
       localStorage.setItem('token', result.data.signin);
-      replace('/dashboard');
+      push('/dashboard');
     } else {
       // failed
       setFailed(true);

@@ -1,7 +1,6 @@
 import { useMutation } from '@apollo/client';
 import { useState } from 'react';
-import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
@@ -18,7 +17,7 @@ const SIGNUP = gql`
 `;
 
 function SignupScreen(): JSX.Element {
-  const { replace } = useHistory();
+  const push = useNavigate();
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -35,7 +34,7 @@ function SignupScreen(): JSX.Element {
       }
     });
     // success
-    replace('/');
+    push('/signin');
   };
 
   return (
