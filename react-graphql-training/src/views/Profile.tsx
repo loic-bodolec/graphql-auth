@@ -12,7 +12,7 @@ function Profile(): JSX.Element {
       {loading && <p>Chargement...</p>}
       {data && (
         <div>
-          <p>Prénom : {data.getProfile.lastname}</p>
+          <p>Prénom : {data.getProfile.firstname}</p>
           <p>Nom : {data.getProfile.lastname}</p>
           <p>Email : {data.getProfile.email}</p>
         </div>
