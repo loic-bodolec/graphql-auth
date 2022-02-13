@@ -17,6 +17,7 @@ export const GET_PROFILE = gql`
 export const GET_USERS = gql`
   query GetUsers {
     getUsers {
+      id
       firstname
       lastname
       email
