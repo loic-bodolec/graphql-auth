@@ -61,7 +61,7 @@ function SignupScreen(): JSX.Element {
       <Button className="signup-button" onClick={onSubmit} disabled={loading === true}>
         S'inscrire
       </Button>
-      {error && <p>Error</p>}
+      {error && <p>Erreur!</p>}
       <Link className="signup-link" to="/signin">
         Déjà un compte?
       </Link>
