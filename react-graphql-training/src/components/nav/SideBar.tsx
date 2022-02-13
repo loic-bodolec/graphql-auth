@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Nav } from 'react-bootstrap';
 import { IconContext } from 'react-icons';
 import { AiOutlineClose, AiOutlineDashboard } from 'react-icons/ai';
-import { MdAddCircleOutline } from 'react-icons/md';
+import { MdAddCircleOutline, MdPeopleAlt } from 'react-icons/md';
 
 type SideBarProps = {
   isActive: boolean;
@@ -21,6 +21,11 @@ const Sidebar = ({ isActive, showSidebar }: SideBarProps) => {
             <Nav.Item className="sidebar-nav-item">
               <Nav.Link href="/dashboard">
                 <AiOutlineDashboard className="sidebar-icon" /> Tableau de bord
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="sidebar-nav-item">
+              <Nav.Link href="/users">
+                <MdPeopleAlt className="sidebar-icon" /> Liste des membres
               </Nav.Link>
             </Nav.Item>
             <Button className="add-project-button" size="sm">

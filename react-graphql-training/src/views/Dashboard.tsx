@@ -3,7 +3,6 @@ import { useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { GET_PROFILE } from '../services/api/queries/user-queries';
-import UserList from '../components/UsersList';
 
 function DashboardScreen(): JSX.Element {
   const push = useNavigate();
@@ -26,7 +25,6 @@ function DashboardScreen(): JSX.Element {
           </Button>
         </div>
       )}
-      <UserList />
     </div>
   );
 }

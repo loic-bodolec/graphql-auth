@@ -6,6 +6,7 @@ import SigninScreen from './views/Signin';
 import SignupScreen from './views/Signup';
 import DashboardScreen from './views/Dashboard';
 import ProfileScreen from './views/Profile';
+import UsersScreen from './views/Users';
 import { Layout } from './components/Layout';
 
 function Router(): JSX.Element {
@@ -21,12 +22,13 @@ function Router(): JSX.Element {
         {data ? (
           <Route element={<Layout />}>
             <Route path="/dashboard" element={<DashboardScreen />} />
+            <Route path="/users" element={<UsersScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
           </Route>
         ) : (
           '/'
         )}
-        <Route path="*" element={<HomeScreen />} />
+        <Route path="/*" element={<HomeScreen />} />
       </Routes>
     </BrowserRouter>
   );
