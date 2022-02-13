@@ -1,0 +1,14 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  height: 90vh;
+}
+
+
+.logout-button {
+  background-color: $primary;
+  margin: 1rem;
+}

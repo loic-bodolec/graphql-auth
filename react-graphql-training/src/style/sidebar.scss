@@ -1,0 +1,94 @@
+.sidebar-nav {
+  background-color: $bg-light;
+  width: 275px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 1000ms;
+}
+
+.sidebar-nav.active {
+  left: 0;
+  transition: 350ms;
+}
+
+.menu-cross {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: $bg-light;
+  height: 2.5rem;
+  font-size: 2rem;
+  margin: 1rem 0rem 2rem 0rem;
+}
+
+.project-menu-item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 0.5rem;
+  height: 3.75rem;
+  font-size: 1.125rem;
+
+  &:hover {
+    background-color: $bg-white;
+    border-radius: 1rem;
+    border-left: 4px solid $primary;
+    margin: 0.25rem;
+    padding-left: 0.5rem;
+    opacity: 60%;
+  }
+}
+
+.project-name {
+  margin-left: 0.5rem;
+}
+
+.project-link {
+  text-decoration: none;
+}
+
+.project-list-button {
+  margin: 2rem 0rem 3rem 1rem;
+  border-radius: 15px;
+}
+
+.add-project-button {
+  background-color: $primary;
+  position: absolute;
+  margin: 2rem 0rem 2rem 1rem;
+  bottom: 0;
+}
+
+.sidebar-nav-item {
+  margin: 2rem 0rem;
+}
+
+.nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  font-size: 1.125rem;
+
+  &:hover {
+    background-color: $bg-white;
+    border-radius: 1rem;
+    border-left: 4px solid $primary;
+    margin: 0.25rem;
+    padding-left: 0.5rem;
+    opacity: 60%;
+  }
+}
+
+.sidebar-icon {
+  font-size: 1.75rem;
+}
+
+.add-icon {
+  color: $bg-white !important;
+  font-size: 1.75rem;
+}

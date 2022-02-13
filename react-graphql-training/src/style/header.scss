@@ -1,0 +1,32 @@
+.top-navbar {
+  background-color: $bg-light;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-header {
+  width: 3rem;
+  height: auto;
+}
+
+.menu-bars-title {
+  background-color: $bg-light;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-bars {
+  display: flex;
+  align-items: center;
+  margin-left: 1.25rem;
+  font-size: 2rem;
+}
+
+.top-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1.25rem;
+  font-size: 2rem;
+}
