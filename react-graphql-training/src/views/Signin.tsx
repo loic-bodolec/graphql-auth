@@ -12,6 +12,13 @@ function SigninScreen(): JSX.Element {
   const [failed, setFailed] = useState(false);
   const [doSignin, { loading, error }] = useMutation(SIGNIN);
 
+  /* provisional */
+  /** 
+  function refreshPage() {
+    window.location.reload();
+  } 
+  */
+
   const onSubmit = async () => {
     setFailed(false);
     const result = await doSignin({
@@ -24,6 +31,7 @@ function SigninScreen(): JSX.Element {
       // success
       localStorage.setItem('token', result.data.signin);
       push('/dashboard');
+      /* refreshPage(); */
     } else {
       // failed
       setFailed(true);
