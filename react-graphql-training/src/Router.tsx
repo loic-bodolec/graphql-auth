@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { BrowserRouter, /* Navigate, */ Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { GET_PROFILE } from './services/api/queries/user-queries';
 import HomeScreen from './views/Home';
 import SigninScreen from './views/Signin';
@@ -15,7 +15,6 @@ function Router(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        {/*         <Navigate to={data ? '/dashboard' : '/'} /> */}
         <Route path="/" element={<HomeScreen />} />
         <Route path="/signin" element={<SigninScreen />} />
         <Route path="/signup" element={<SignupScreen />} />
@@ -28,7 +27,7 @@ function Router(): JSX.Element {
         ) : (
           '/'
         )}
-        <Route path="/*" element={<HomeScreen />} />
+        <Route path="*" element={<HomeScreen />} />
       </Routes>
     </BrowserRouter>
   );
