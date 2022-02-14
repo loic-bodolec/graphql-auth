@@ -5,6 +5,7 @@ import { useHistory } from 'react-router';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { SIGNIN } from '../services/api/mutations/user-mutations';
+import { GET_USERS } from '../services/api/queries/user-queries';
 
 function SigninScreen(): JSX.Element {
   const { replace } = useHistory();
@@ -19,7 +20,8 @@ function SigninScreen(): JSX.Element {
       variables: {
         email: email,
         password: password
-      }
+      },
+      refetchQueries: [GET_USERS]
     });
     if (result.data.signin) {
       // success

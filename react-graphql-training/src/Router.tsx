@@ -7,6 +7,7 @@ import SigninScreen from './views/Signin';
 import SignupScreen from './views/Signup';
 import DashboardScreen from './views/Dashboard';
 import ProfileScreen from './views/Profile';
+import Layout from './components/layout/Layout';
 
 function Router(): JSX.Element {
   const { data /*, loading, error */ } = useQuery(GET_PROFILE);
@@ -15,19 +16,23 @@ function Router(): JSX.Element {
     <BrowserRouter>
       <Redirect exact path="/" to={data ? '/dashboard' : '/'} />
       <Route exact path="/signin">
-        <SigninScreen/>
+        <SigninScreen />
       </Route>
       <Route exact path="/signup">
-        <SignupScreen/>
+        <SignupScreen />
       </Route>
-      <Route exact path="/dashboard">
-        <DashboardScreen/>
-      </Route>
-      <Route exact path="/profile">
-        <ProfileScreen/>
-      </Route>
+      {data && (
+        <Layout>
+          <Route exact path="/dashboard">
+            <DashboardScreen />
+          </Route>
+          <Route exact path="/profile">
+            <ProfileScreen />
+          </Route>
+        </Layout>
+      )}
       <Route exact path="/">
-        <HomeScreen/>
+        <HomeScreen />
       </Route>
     </BrowserRouter>
   );
