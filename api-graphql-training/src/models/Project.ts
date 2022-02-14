@@ -13,6 +13,10 @@ export class Project extends BaseEntity {
     @Column()
     title!: string;
 
+    @Field()
+    @Column()
+    description!: string;
+
     @Field(() => User)
     @ManyToOne(() => User, project => project.projects)
     createBy: User;
@@ -22,4 +26,7 @@ export class Project extends BaseEntity {
 export class ProjectInput {
     @Field()
     title!: string;
+
+    @Field()
+    description!: string;
 }

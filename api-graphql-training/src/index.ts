@@ -9,7 +9,7 @@ import { ProjectsResolver } from './resolvers/Project';
 const PORT = process.env.PORT || 4000;
 
 async function bootstrap() {
-    // database connection, the config is loaded from ormconfig.json
+    // database connection, the config is loaded from ormconfig.json (or from .env)
     await createConnection();
 
     // ... Building schema here

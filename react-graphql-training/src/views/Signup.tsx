@@ -44,7 +44,7 @@ function SignupScreen(): JSX.Element {
         </Form.Group>
         <Form.Group className="mb-3" controlId="Form.ControlInput4-signup">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="name@example.com" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <Form.Control type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </Form.Group>
       </Form>
       <Button className="signup-button" onClick={onSubmit} disabled={loading === true}>
