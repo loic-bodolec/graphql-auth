@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import { GET_PROFILE } from '../services/api/queries/user-queries';
 
 function Profile(): JSX.Element {
-  const { data, loading /* , error */ } = useQuery(GET_PROFILE);
+  const { data, loading , error } = useQuery(GET_PROFILE);
 
   return (
     <div className="dashboard-container">
       <h1>Mon profil</h1>
       {loading && <p>Chargement...</p>}
+      {error && <p>Une erreur s'est produite...</p>}
       {data && (
         <div>
           <p>Prénom : {data.getProfile.firstname}</p>

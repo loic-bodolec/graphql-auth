@@ -10,10 +10,15 @@ function SigninScreen(): JSX.Element {
   const { replace } = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [validated, setValidated] = useState(false);
   const [failed, setFailed] = useState(false);
-  const [doSignin, { loading, error }] = useMutation(SIGNIN);
+  const [doSignin, { /* loading, */ error }] = useMutation(SIGNIN);
 
-  const onSubmit = async () => {
+  const handleSubmit = async (event: any) => {
+    const form = event.currentTarget;
+    event.preventDefault();
+    event.stopPropagation();
+    setValidated(true);
     setFailed(false);
     const result = await doSignin({
       variables: {
@@ -21,7 +26,7 @@ function SigninScreen(): JSX.Element {
         password: password
       }
     });
-    if (result.data.signin) {
+    if (form.checkValidity() === true && result.data.signin) {
       // success
       localStorage.setItem('token', result.data.signin);
       replace('/dashboard');
@@ -34,21 +39,21 @@ function SigninScreen(): JSX.Element {
   return (
     <div className="signin-container">
       <h1>Connexion</h1>
-      <Form>
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="Form.ControlInput1-signin">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Form.Control type="email" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Form.ControlInput2-signin">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <Form.Control type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </Form.Group>
-      </Form>
-      <Button className="signin-button" onClick={onSubmit} disabled={loading === true}>
+        <Button className="signin-button" type="submit">
         Se connecter
       </Button>
-      {error && <p>Error</p>}
-      {failed && <p>You failed</p>}
+      </Form>
+      {error && <p className="message-error">Une erreur s'est produite!</p>}
+      {failed && <p className="message-fail">Données incorrectes!</p>}
       <Link className="signin-link" to="/signup">
         Pas encore de compte?
       </Link>

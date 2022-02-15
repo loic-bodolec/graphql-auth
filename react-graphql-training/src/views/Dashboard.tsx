@@ -7,7 +7,7 @@ import UserList from '../components/UsersList';
 
 function DashboardScreen(): JSX.Element {
   const { replace } = useHistory();
-  const { data /* , loading */, error } = useQuery(GET_PROFILE);
+  const { data , loading, error } = useQuery(GET_PROFILE);
 
   const onSignOut = () => {
     localStorage.removeItem('token');
@@ -18,7 +18,8 @@ function DashboardScreen(): JSX.Element {
     <>
       <div className="dashboard-container">
         <h1>Tableau de bord</h1>
-        {error && <p>Erreur!</p>}
+        {loading && <p>Chargement...</p>}
+        {error && <p>Une erreur s'est produite...</p>}
         {data && (
           <div>
             <p>Hello {data.getProfile.firstname}!</p>
