@@ -15,19 +15,19 @@ function Router(): JSX.Element {
     <BrowserRouter>
       <Redirect exact path="/" to={data ? '/dashboard' : '/'} />
       <Route exact path="/signin">
-        <SigninScreen/>
+        <SigninScreen />
       </Route>
       <Route exact path="/signup">
-        <SignupScreen/>
+        <SignupScreen />
       </Route>
       <Route exact path="/dashboard">
-        <DashboardScreen/>
+        <DashboardScreen />
       </Route>
       <Route exact path="/profile">
-        <ProfileScreen/>
+        <ProfileScreen />
       </Route>
       <Route exact path="/">
-        <HomeScreen/>
+        <HomeScreen />
       </Route>
     </BrowserRouter>
   );
