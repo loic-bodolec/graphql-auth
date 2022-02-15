@@ -43,19 +43,19 @@ function SignupScreen(): JSX.Element {
       <h1>Inscription</h1>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="Form.ControlInput1-signup">
-          <Form.Label>Firstname</Form.Label>
+          <Form.Label className="signup-form-label">Firstname</Form.Label>
           <Form.Control type="text" placeholder="your firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)} required />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Form.ControlInput2-signup">
-          <Form.Label>Lastname</Form.Label>
+          <Form.Label className="signup-form-label">Lastname</Form.Label>
           <Form.Control type="text" placeholder="your lastname" value={lastname} onChange={(e) => setLastName(e.target.value)} required />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Form.ControlInput3-signup">
-          <Form.Label>Email</Form.Label>
+          <Form.Label className="signup-form-label">Email</Form.Label>
           <Form.Control type="email" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Form.ControlInput4-signup">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className="signup-form-label">Password</Form.Label>
           <Form.Control type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Form.ControlInput5-signup">

@@ -5,6 +5,8 @@
   display: flex;
   justify-content: center;
   position: fixed;
+  padding-left: 15px;
+  padding-right: 15px;
   top: 0;
   left: -100%;
   transition: 1000ms;
@@ -69,17 +71,19 @@
 
 .nav-link {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   height: 3rem;
   font-size: 1.125rem;
+  border-left: 4px solid transparent;
+  border-radius: 4px;
+  margin: 0.25rem;
+  padding-left: 0.5rem;
+  transition: 0.3s;
 
   &:hover {
     background-color: $bg-white;
-    border-radius: 1rem;
     border-left: 4px solid $primary;
-    margin: 0.25rem;
-    padding-left: 0.5rem;
     opacity: 60%;
   }
 }
