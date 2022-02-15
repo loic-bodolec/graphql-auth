@@ -3,12 +3,13 @@ import { useQuery } from '@apollo/client';
 import { GET_USERS } from '../services/api/queries/user-queries';
 
 function UserList() {
-  const { loading, data } = useQuery(GET_USERS);
+  const { data, loading , error } = useQuery(GET_USERS);
 
   return (
     <div className="users-list-container">
       <h3 className="users-list-title">Liste des membres :</h3>
       {loading && <p>Chargement...</p>}
+      {error && <p>Une erreur s'est produite...</p>}
       {data &&
         data.getUsers.map((user: any) => {
           return (

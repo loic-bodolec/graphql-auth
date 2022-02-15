@@ -47,8 +47,8 @@ function SigninScreen(): JSX.Element {
       <Button className="signin-button" onClick={onSubmit} disabled={loading === true}>
         Se connecter
       </Button>
-      {error && <p>Error</p>}
-      {failed && <p>You failed</p>}
+      {error && <p>Une erreur s'est produite...</p>}
+      {failed && <p>Données incorrectes!</p>}
       <Link className="signin-link" to="/signup">
         Pas encore de compte?
       </Link>
