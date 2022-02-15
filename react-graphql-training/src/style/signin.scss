@@ -3,8 +3,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
-  height: 90vh;
+  margin: 2rem 0rem;
+}
+
+.signin-form-label {
+  font-size: 1rem;
 }
 
 .signin-button {
