@@ -12,9 +12,20 @@ function SignupScreen(): JSX.Element {
   const [lastname, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [doSignUp, { loading, error }] = useMutation(SIGNUP);
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [validated, setValidated] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [doSignUp, { /* loading, */ error }] = useMutation(SIGNUP);
 
-  const onSubmit = async () => {
+  const handleSubmit = async (event: any) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false || password !== confirmPassword) {
+      event.preventDefault();
+      event.stopPropagation();
+      setFailed(true);
+    } else {
+      setValidated(true);
+      setFailed(false);
     await doSignUp({
       variables: {
         firstname: firstname,
@@ -23,35 +34,40 @@ function SignupScreen(): JSX.Element {
         password: password
       }
     });
-    // success
     replace('/');
-  };
+  }
+};
 
   return (
     <div className="signup-container">
       <h1>Inscription</h1>
-      <Form>
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="Form.ControlInput1-signup">
           <Form.Label>Firstname</Form.Label>
-          <Form.Control type="text" placeholder="your firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)} />
+          <Form.Control type="text" placeholder="your firstname" value={firstname} onChange={(e) => setFirstName(e.target.value)} required />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Form.ControlInput2-signup">
           <Form.Label>Lastname</Form.Label>
-          <Form.Control type="text" placeholder="your lastname" value={lastname} onChange={(e) => setLastName(e.target.value)} />
+          <Form.Control type="text" placeholder="your lastname" value={lastname} onChange={(e) => setLastName(e.target.value)} required />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Form.ControlInput3-signup">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Form.Control type="email" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Form.ControlInput4-signup">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <Form.Control type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </Form.Group>
-      </Form>
-      <Button className="signup-button" onClick={onSubmit} disabled={loading === true}>
+        <Form.Group className="mb-3" controlId="Form.ControlInput5-signup">
+          <Form.Label className="signup-form-label">Confirmation du mot de passe</Form.Label>
+          <Form.Control type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+        </Form.Group>
+        <Button className="signup-button" type="submit">
         S'inscrire
       </Button>
-      {error && <p>Une erreur s'est produite...</p>}
+      </Form>
+      {error && <p className="message-error">Une erreur s'est produite!</p>}
+      {failed && <p className="message-fail">Merci de compléter correctement le formulaire!</p>}
       <Link className="signup-link" to="/signin">
         Déjà un compte?
       </Link>
